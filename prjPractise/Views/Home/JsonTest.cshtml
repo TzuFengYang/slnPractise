@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewData["Title"] = "JsonTest";
+}
+
+<h1>JsonTest</h1>
+<ul id="empId"></ul>
+
+@section Scripts{
+    <script src="~/js/travel.js">
+    </script>
+    <script>
+        const emps = [{ "name": "Tom", "workYears": 3, "salary": 35000 },
+        { "name": "Jack", "workYears": 5, "salary": 40000 },
+        { "name": "Mary", "workYears": 7, "salary": 45000 }];
+
+        emps.forEach(emp => {
+            console.log(emp.name);
+            console.log(emp.workYears);
+            console.log(emp.salary);
+        })
+        
+        const id = document.querySelector('#empId');
+        const {name,workYears,salary } = emps;
+        const empLi = emps.map(emp => `<li>${name},${workYears},${salary}</li>`);
+        id.innerHTML = empLi.join("");
+    </script>
+}

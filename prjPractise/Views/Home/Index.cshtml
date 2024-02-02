@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+@section Scripts{
+<script>
+    function show(data) {
+        return new Promise((resolve, reject)=>{
+            setTimeout(() => { resolve(data); },1000)
+        })
+    }
+    //Promise語法
+    // show('A').then(data => {
+    //     console.log(data);
+    //     return show('B');
+    // }).then(data => {
+    //     console.log(data);
+    //     return show('C');
+    // }).then(data => {
+    //     console.log(data);
+    // }).finally(() => {
+    //     console.log('end');
+    // })
+
+    //async 語法
+    (async() => {
+        let data = await show('A');
+        console.log(data);
+            data = await show('B');
+            console.log(data);
+            data = await show('C');
+            console.log(data);
+    })();
+</script>
+}

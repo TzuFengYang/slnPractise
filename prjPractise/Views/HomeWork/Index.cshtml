@@ -1,0 +1,44 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+
+}
+<div id="travel" class="row row-cols-1 row-cols-md-3 g-4">
+
+</div>
+
+
+@section Scripts{
+    <script src="~/js/travel.js"></script>
+    <script>
+        const li = spots.CommonFormat.Section.map(tra => {
+            let str = tra.xbody;
+            if (str.length>100){
+                str = str.slice(0, 99)+"...";
+            }
+            const img = Array.isArray(tra.file.img) ? tra.file.img[0].text : tra.file.img.text;
+            return (`
+                    <div class="col">
+                        <div class="card h-100">
+                                            <img src="${img}" class="card-img-top" alt = "...">
+                                <div class="card-body">
+                                    <h5 class="card-title" > ${tra.stitle} </h5>
+                                        <p class="card-text" > ${str}</p>
+                                </div>
+                                <div class="card-footer">
+                                            <small class="text-muted"> ${tra.address} </small>
+                                </div>
+                        </div>
+                    </div>`)
+        })
+        document.querySelector('#travel').innerHTML = li.join("");
+        // spots.CommonFormat.Section.forEach(card => {
+        //     console.log(card.stitle);
+        //     console.log(card.xbody);
+        //     console.log(card.file.img[0].text);
+        // })
+
+            
+    </script>
+}
